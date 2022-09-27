@@ -7,3 +7,10 @@
 # - 1 y2
 # out
 # 5.099
+
+x1 = float(input("Enter value for X coordinate for 1-st point: "))
+y1 = float(input("Enter value for Y coordinate for 1-st point: "))
+x2 = float(input("Enter value for X coordinate for 2-nd point: "))
+y2 = float(input("Enter value for Y coordinate for 2-nd point: "))
+result = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+print(f'Distance between first point [{x1}, {y1}] and second point [{x2}, {y2}] is: {result:.3f}')
