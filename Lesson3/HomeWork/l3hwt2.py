@@ -20,6 +20,8 @@ def pair_mult(datalist):
     multiple = list()
     for i in range(len(datalist) // 2):
         multiple.append(datalist[i] * datalist[-1 - i])
+    if len(datalist) % 2 != 0:
+        multiple.append(datalist[len(datalist) // 2])
     return multiple
 
 
