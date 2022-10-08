@@ -17,7 +17,7 @@ def addition_from_file(file1, file2):
     with open(file1, 'r', encoding="UTF-8") as output1:
         with open(file2, 'r', encoding="UTF-8") as output2:
             for i in range(1, sum(1 for line in output2)):
-                new_line = output1.readline(i) + output2.readline(i)
+                new_line = output1.readline(i).strip('=0') + output2.readline(i)
                 new_data.append(new_line)
     with open(file1, 'w', encoding="UTF-8") as output:
         for i in range(len(new_data)):
