@@ -34,7 +34,7 @@ def input_meth():
     while temp < 1:
         temp = int(input('Enter the number of words: '))
         if temp < 1:
-            print('Incorrect data, try again!')
+            print('Incorrect data, try again')
     return temp
 
 
