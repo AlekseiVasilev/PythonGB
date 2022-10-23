@@ -12,17 +12,19 @@ from random import sample
 def create_line(num):
     rand_string = ''
     for i in range(num - 1):
-        rand_string += ''.join(sample('абв', 3)) + " "
-    rand_string += ''.join(sample('абв', 3))
+        rand_string += ''.join(sample("абв", 3)) + " "
+    rand_string += ''.join(sample("абв", 3))
     return rand_string
 
 
-def cut_keyword(str, word):
-    data_list = str.split()
-    for i in range(len(data_list) - 1):
+def cut_keyword(txt, word):
+    data_list = txt.split()
+    i = 0
+    while i < len(data_list):
         if data_list[i] == word:
             data_list.remove(data_list[i])
-            i = i - 1
+        else:
+            i += 1
     result_string = ' '.join(data_list)
     return result_string
 
