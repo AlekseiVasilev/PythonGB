@@ -29,6 +29,15 @@ def cut_keyword(txt, word):
     return result_string
 
 
-line = create_line(int(input('Enter the number of words: ')))
+def input_meth():
+    temp = 0
+    while temp < 1:
+        temp = int(input('Enter the number of words: '))
+        if temp < 1:
+            print('Incorrect data, try again!')
+    return temp
+
+
+line = create_line(input_meth())
 print(f'Start string is: {line}')
 print(f"Result string is: {cut_keyword(line, 'абв')}")
