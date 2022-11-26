@@ -37,9 +37,10 @@ def game_algo(round_result, round_amount, start_position, game_mode):
         try:
             master_count = int(input('Hmmm...how many steps do you want?\n'))
             if master_count <= 0:
-                exit('How you wanna count with this value?! Type positive number next time!')
+                master_count = 1
+                print('How you wanna count with this value?! Type positive number next time! Now we count one...')
             if master_count > len(round_result):
-                print("Uhhh...i'm tired, you can't count more then pepople's amount, so")
+                print("Uhhh...i'm tired, you can't count more then pepople's amount, so...I'll count all")
                 master_count = len(round_result)
         except ValueError:
             exit('Facepalm...')
