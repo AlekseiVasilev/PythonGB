@@ -16,9 +16,11 @@ def input_method():
             players_list = [[i, 0] for i in range(1, players_number + 1)]
             return players_list, 1
         else:
-            exit('Very funny. Only positive number')
+            print('Very funny. Only positive number')
+            input_method()
     except ValueError:
-        exit('Rly...how we start without people?!')
+        print('Rly...how we start without people?!')
+        input_method()
 
 
 def master_choose():
@@ -27,23 +29,31 @@ def master_choose():
         if mode == 1 or mode == 2:
             return mode
         else:
-            exit("Choose 1 or 2...it's not so hard, isn't it?")
+            print("Choose 1 or 2...it's not so hard, isn't it?")
+            master_choose()
     except ValueError:
-        exit('No-no-no...1 or 2 next time')
+        print('No-no-no...1 or 2 next time')
+        master_choose()
+
+
+def turn_exception(rnd_result):
+    try:
+        mst_count = int(input('Hmmm...how many steps do you want?\n'))
+        if mst_count <= 0:
+            print('How you wanna count with this value?! Type positive number next time!')
+            turn_exception(rnd_result)
+        elif mst_count > len(rnd_result):
+            print("Uhhh...i'm tired, you can't count more then pepople's amount")
+            turn_exception(rnd_result)
+        return mst_count
+    except ValueError:
+        print('Facepalm...')
+        turn_exception(rnd_result)
 
 
 def game_algo(round_result, round_amount, start_position, game_mode):
     if game_mode == 1:
-        try:
-            master_count = int(input('Hmmm...how many steps do you want?\n'))
-            if master_count <= 0:
-                master_count = 1
-                print('How you wanna count with this value?! Type positive number next time! Now we count one...')
-            if master_count > len(round_result):
-                print("Uhhh...i'm tired, you can't count more then pepople's amount, so...I'll count all")
-                master_count = len(round_result)
-        except ValueError:
-            exit('Facepalm...')
+        master_count = turn_exception(round_result)
     else:
         master_count = randint(1, len(round_result))
     hash = []
@@ -75,8 +85,11 @@ def game_algo(round_result, round_amount, start_position, game_mode):
         print(f'Player #{round_result[i][0]}: {round_result[i][1]} coins')
     return round_result, start_position - 1
 
-
-game_data, start = input_method()
+try:
+    game_data, start = input_method()
+except TypeError:
+    print('Something goes wrong, try again please')
+    game_data, start = input_method()
 game_mode = master_choose()
 for i in range(len(game_data) - 1):
     a, start = game_algo(game_data, i + 1, start, game_mode)
