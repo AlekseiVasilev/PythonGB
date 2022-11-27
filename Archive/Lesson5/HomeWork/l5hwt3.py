@@ -44,4 +44,5 @@ turn = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 player1 = input("Enter first player name: ")
 player2 = input("Enter second player name: ")
 players = [[1, player1], [2, player2]]
+field_creator(turn)
 turn_maker(players, turn)
