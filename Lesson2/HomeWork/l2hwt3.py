@@ -12,11 +12,9 @@ def random_list(listlen):
 
 
 def null_insertion(data_list):
-    for i in range(len(data_list) - 1):
+    for i in range(len(data_list) - 1, -1, -1):
         if data_list[i] < 0:
             data_list.insert(i + 1, 0)
-    if data_list[-1] < 0:
-        data_list.append(0)
     return data_list
 
 
