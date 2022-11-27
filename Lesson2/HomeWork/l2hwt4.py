@@ -29,26 +29,26 @@ def master_choose():
         if mode == 1 or mode == 2:
             return mode
         else:
-            print("Choose 1 or 2...it's not so hard, isn't it?")
-            master_choose()
+            print("If this is so hard, i'll choose myself WHOAHAHAAH!!")
+            mode = 2
+            return mode
     except ValueError:
-        print('No-no-no...1 or 2 next time')
-        master_choose()
+        print('I see...now, destiny in my hands!')
+        mode = 2
+        return mode
 
 
 def turn_exception(rnd_result):
     try:
         mst_count = int(input('Hmmm...how many steps do you want?\n'))
-        if mst_count <= 0:
+        if mst_count <= 0 or mst_count > len(rnd_result):
             print('How you wanna count with this value?! Type positive number next time!')
-            turn_exception(rnd_result)
-        elif mst_count > len(rnd_result):
-            print("Uhhh...i'm tired, you can't count more then pepople's amount")
-            turn_exception(rnd_result)
+            mst_count = randint(1, len(rnd_result))
         return mst_count
     except ValueError:
         print('Facepalm...')
-        turn_exception(rnd_result)
+        mst_count = randint(1, len(rnd_result))
+        return mst_count
 
 
 def game_algo(round_result, round_amount, start_position, game_mode):
