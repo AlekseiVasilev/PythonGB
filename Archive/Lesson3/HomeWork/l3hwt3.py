@@ -11,7 +11,6 @@ def int_to_binary(number):
         binary.insert(0, number % 2)
         number //= 2
     binary.insert(0, number)
-
     return binary
 
 
