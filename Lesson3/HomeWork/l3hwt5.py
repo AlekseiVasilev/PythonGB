@@ -1,26 +1,6 @@
 # 5. Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
-from typing import Optional
 
-
-def give_int(input_string: str,
-             min_num: Optional[int] = None) -> int:
-    '''
-    Gives integer number
-
-    :param input_string: welcome to input
-    :param min_num: minimum for number's value
-    :return: int number
-    '''
-
-    while True:
-        try:
-            num = int(input(input_string))
-            if min_num and num < min_num:
-                print(f'Type number which value is {min_num} or bigger!')
-                continue
-            return num
-        except ValueError:
-            print("That's not a natural number.")
+from gbfunctions import give_int
 
 
 def neg_fibo_pos(number: int) -> list:

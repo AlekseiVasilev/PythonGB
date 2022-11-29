@@ -1,43 +1,8 @@
 # 3. Задайте список из произвольных вещественных чисел, количество задаёт пользователь.
 # Напишите программу, которая найдёт разницу между максимальным и минимальным значением дробной части элементов.
 
-from random import random, randint
-from typing import Optional
 
-
-def give_int(input_string: str,
-             min_num: Optional[int] = None) -> int:
-    '''
-    Gives integer number
-
-    :param input_string: welcome to input
-    :param min_num: minimum for number's value
-    :return: int number
-    '''
-
-    while True:
-        try:
-            num = int(input(input_string))
-            if min_num and num <= min_num:
-                print(f'Type number bigger then {min_num}!')
-                continue
-            return num
-        except ValueError:
-            print("That's not a natural number.")
-
-
-def random_list(listlen: int) -> list:
-    '''
-    Gives list with random values
-
-    :param listlen: list's length
-    :return: list with random values
-    '''
-
-    datalist = list()
-    for i in range(listlen):
-        datalist.append(round(random() - randint(-10, 10), 4))
-    return datalist
+from gbfunctions import give_int, random_list_float
 
 
 def max_min_fract(datalist: list) -> float:
@@ -67,6 +32,6 @@ def max_min_fract(datalist: list) -> float:
 
 
 size = give_int('Type value for length of the list: ', 1)
-numbers = random_list(size)
+numbers = random_list_float(size)
 print(numbers)
 print(f'Difference is: {max_min_fract(numbers)}')
