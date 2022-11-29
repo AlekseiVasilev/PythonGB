@@ -19,7 +19,7 @@
 
 def employers_data(num):
     '''
-    Generates list for employers at company
+    Generates list for employers at company.
 
     :param num: takes amount of employers
     :return: employers list
@@ -30,7 +30,7 @@ def employers_data(num):
 
 def wage_data(emp):
     '''
-    Generates list for employer's wage. List length can't be larger then employers list
+    Generates list for employer's wage. List length can't be larger then employers list.
 
     :param emp: employers list
     :return: wages list
@@ -49,7 +49,7 @@ def wage_data(emp):
 
 def favorits_list(emp):
     '''
-    Gives Lyuba opportunity to choose bosses favourites from employers list
+    Gives Lyuba opportunity to choose bosses favourites from employers list.
 
     :param emp: employers list
     :return: favourites list
@@ -68,7 +68,7 @@ def favorits_list(emp):
 
 def wage_common(emp, wgs):
     '''
-    Generates dictionary with "employer - wage" dependance where wage is chosen by Lyuba
+    Generates dictionary with "employer - wage" dependance where wage is chosen by Lyuba.
 
     :param emp: takes list of employers
     :param wgs: takes list of employer's wages
@@ -89,7 +89,7 @@ def wage_common(emp, wgs):
 
 def wage_result(wgs_data, favs, coef_emp, coef_favs):
     '''
-    Generates final document with actual wages
+    Generates final document with actual wages.
 
     :param wgs_data: takes dictionary with keys: employers, items: wages
     :param favs: takes list with favourite employers
@@ -110,7 +110,7 @@ def wage_result(wgs_data, favs, coef_emp, coef_favs):
 
 def print_wages_list(dct, entry_string):
     '''
-    Prints wage list to console
+    Prints wage list to console.
 
     :param dct: takes wage list
     :param entry_string: takes first string to final document
