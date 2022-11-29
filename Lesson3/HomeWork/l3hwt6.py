@@ -17,7 +17,7 @@
 # Гарри Джеймс Поттер, 15000
 # ДАДЛИ ВЕРНОН ДУРСЛЬ 24000
 
-def employers_data(num):
+def employers_data(num: int) -> list:
     '''
     Generates list for employers at company.
 
@@ -28,26 +28,26 @@ def employers_data(num):
     return names
 
 
-def wage_data(emp):
+def salary_data(emp: list) -> list:
     '''
-    Generates list for employer's wage. List length can't be larger then employers list.
+    Generates list for employer's salary. List length can't be larger then employers list.
 
     :param emp: employers list
-    :return: wages list
+    :return: salaries list
     '''
-    wages = []
+    salaries = []
     for i in range(len(emp)):
         val = ''
         while not val.isdigit():
-            val = input('Type wage value: ')
+            val = input('Type salary value: ')
             if val.isdigit() and int(val) > 0:
-                wages.insert(i, int(val))
+                salaries.insert(i, int(val))
             else:
                 print('Type natural number pls. They working not for food or letters')
-    return wages
+    return salaries
 
 
-def favorits_list(emp):
+def favorits_list(emp: list) -> list:
     '''
     Gives Lyuba opportunity to choose bosses favourites from employers list.
 
@@ -66,36 +66,36 @@ def favorits_list(emp):
     return favors
 
 
-def wage_common(emp, wgs):
+def salary_common(emp: list, wgs: list) -> dict:
     '''
-    Generates dictionary with "employer - wage" dependance where wage is chosen by Lyuba.
+    Generates dictionary with "employer - salary" dependance where salary is chosen by Lyuba.
 
     :param emp: takes list of employers
-    :param wgs: takes list of employer's wages
+    :param wgs: takes list of employer's salaries
     :return: dictionary with emp values as keys, and wgs values as items
     '''
-    wages = {}
+    salaries = {}
     for i in range(len(emp)):
-        user_choise = input(f"What wage's value is for {emp[i]}?\n" \
+        user_choise = input(f"What salary's value is for {emp[i]}?\n" \
                             f"Choice right position from following list:\n{wgs}\n" \
                             f"Type position from 1 to {len(wgs)}:\n")
         if not user_choise.isdigit() or int(user_choise) not in range(1, len(wgs) + 1):
             user_choise = 0
         else:
             user_choise = wgs[int(user_choise) - 1]
-        wages[emp[i]] = user_choise
-    return wages
+        salaries[emp[i]] = user_choise
+    return salaries
 
 
-def wage_result(wgs_data, favs, coef_emp, coef_favs):
+def salary_result(wgs_data: dict, favs: list, coef_emp: float, coef_favs: float) -> dict:
     '''
-    Generates final document with actual wages.
+    Generates final document with actual salaries.
 
-    :param wgs_data: takes dictionary with keys: employers, items: wages
+    :param wgs_data: takes dictionary with keys: employers, items: salaries
     :param favs: takes list with favourite employers
-    :param coef_emp: takes coefficient for employers wage
-    :param coef_favs: takes coefficient for favourite employers wage
-    :return: sorted dictionary with actual wages(with coefficient influence) and favourite employers in UPPERCASE
+    :param coef_emp: takes coefficient for employers salary
+    :param coef_favs: takes coefficient for favourite employers salary
+    :return: sorted dictionary with actual salaries(with coefficient influence) and favourite employers in UPPERCASE
     '''
     for i in wgs_data.keys():
         if i in favs:
@@ -108,13 +108,13 @@ def wage_result(wgs_data, favs, coef_emp, coef_favs):
     return wgs_data
 
 
-def print_wages_list(dct, entry_string):
+def print_salaries_list(dct, entry_string: str) -> None:
     '''
-    Prints wage list to console.
+    Prints salary list to console.
 
-    :param dct: takes wage list
+    :param dct: takes salary list
     :param entry_string: takes first string to final document
-    :return: wage list in console
+    :return: salary list in console
     '''
     print(f'{entry_string}')
     for i in dct.keys():
@@ -122,8 +122,8 @@ def print_wages_list(dct, entry_string):
 
 
 data_emp = employers_data(5)
-data_wage = wage_data(data_emp)
-wage_list = wage_common(emp=data_emp, wgs=data_wage)
-print_wages_list(wage_list, 'Standart wages list')
-result_wage = wage_result(wage_list, favorits_list(data_emp), 1.5, 2)
-print_wages_list(result_wage, 'Final wages list 12.2022')
+data_salary = salary_data(data_emp)
+salary_list = salary_common(emp=data_emp, wgs=data_salary)
+print_salaries_list(salary_list, 'Standart salaries list')
+result_salary = salary_result(salary_list, favorits_list(data_emp), 1.5, 2)
+print_salaries_list(result_salary, 'Final salaries list 12.2022')
