@@ -4,6 +4,14 @@ from typing import Optional
 
 def give_int(input_string: str,
              min_num: Optional[int] = None) -> int:
+    '''
+    Gives integer number
+
+    :param input_string: welcome to input
+    :param min_num: minimum for number's value
+    :return: int number
+    '''
+
     while True:
         try:
             num = int(input(input_string))
@@ -14,7 +22,15 @@ def give_int(input_string: str,
         except ValueError:
             print("That's not a natural number.")
 
+
 def neg_fibo_pos(number):
+    '''
+    Gives list with fibonacci/negofibonacci values
+
+    :param number: number of elements
+    :return: list with fibonacci/negofibonacci values
+    '''
+
     np_fibo = [0]
     fib1 = 0
     fib2 = 1

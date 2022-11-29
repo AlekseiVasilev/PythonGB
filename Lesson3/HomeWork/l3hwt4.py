@@ -4,6 +4,14 @@ from typing import Optional
 
 def give_int(input_string: str,
              min_num: Optional[int] = None) -> int:
+    '''
+    Gives integer number
+
+    :param input_string: welcome to input
+    :param min_num: minimum for number's value
+    :return: int number
+    '''
+
     while True:
         try:
             num = int(input(input_string))
@@ -16,6 +24,13 @@ def give_int(input_string: str,
 
 
 def int_to_binary(number):
+    '''
+    Gives reversed list with number % 2 values
+
+    :param number: number to make binary
+    :return: list with number % 2 values
+    '''
+
     binary = []
     while number // 2 != 0:
         binary.insert(0, number % 2)

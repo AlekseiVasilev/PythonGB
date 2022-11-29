@@ -7,6 +7,14 @@ from typing import Optional
 
 def give_int(input_string: str,
              min_num: Optional[int] = None) -> int:
+    '''
+    Gives integer number
+
+    :param input_string: welcome to input
+    :param min_num: minimum for number's value
+    :return: int number
+    '''
+
     while True:
         try:
             num = int(input(input_string))
@@ -19,6 +27,13 @@ def give_int(input_string: str,
 
 
 def random_list(listlen):
+    '''
+    Gives list with random values
+
+    :param listlen: list's length
+    :return: list with random values
+    '''
+
     datalist = list()
     for i in range(listlen):
         datalist.append(randint(-10, 10))
@@ -26,6 +41,13 @@ def random_list(listlen):
 
 
 def summary_on_pos(datalist):
+    '''
+    Gives concatenation of elements on odd indexes
+
+    :param datalist: list with elements
+    :return: concatenation of elements on odd indexes
+    '''
+
     summ = 0
     for i in range(1, len(datalist), 2):
         summ += datalist[i]

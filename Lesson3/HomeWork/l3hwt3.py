@@ -7,6 +7,14 @@ from typing import Optional
 
 def give_int(input_string: str,
              min_num: Optional[int] = None) -> int:
+    '''
+    Gives integer number
+
+    :param input_string: welcome to input
+    :param min_num: minimum for number's value
+    :return: int number
+    '''
+
     while True:
         try:
             num = int(input(input_string))
@@ -19,13 +27,27 @@ def give_int(input_string: str,
 
 
 def random_list(listlen):
+    '''
+    Gives list with random values
+
+    :param listlen: list's length
+    :return: list with random values
+    '''
+
     datalist = list()
     for i in range(listlen):
         datalist.append(round(random() - randint(-10, 10), 4))
     return datalist
 
 
-def max_min_fract(datalist):  # fractal part for negative number:
+def max_min_fract(datalist):
+    '''
+    Gives difference between maximum fractal part and minimum
+
+    :param datalist: list with elements
+    :return: difference between maximum fractal part and minimum
+    '''
+
     max_fract = 0.0  # -5.9 = -6 + 0.1   fract_part = 0.1
     min_fract = 1.0
     for i in range(len(datalist)):
