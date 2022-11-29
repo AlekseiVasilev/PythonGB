@@ -23,12 +23,14 @@ def give_int(input_string: str,
             print("That's not a natural number.")
 
 
-def int_to_binary(number):
+def int_to_binary(number: int) -> str:
     '''
-    Gives reversed list with number % 2 values
+    Gives binary number from dec number as result.
+    Makes reversed list which contains reminder of a division by 2, until number became zero.
+    Then makes string, united this values.
 
     :param number: number to make binary
-    :return: list with number % 2 values
+    :return: string with binary value
     '''
 
     binary = []
@@ -36,8 +38,10 @@ def int_to_binary(number):
         binary.insert(0, number % 2)
         number //= 2
     binary.insert(0, number)
-    return binary
+    result = "".join(map(str, binary))
+    return result
 
 
 num = give_int('Enter natural number: ', 1)
-print("".join(map(str, int_to_binary(num))))
+binary = int_to_binary(num)
+print(f'{num} == 0b{binary}')
