@@ -26,7 +26,7 @@ def give_int(input_string: str,
             print("That's not a natural number.")
 
 
-def random_list(listlen):
+def random_list(listlen: int) -> list:
     '''
     Gives list with random values
 
@@ -40,15 +40,19 @@ def random_list(listlen):
     return datalist
 
 
-def max_min_fract(datalist):
+def max_min_fract(datalist: list) -> float:
     '''
-    Gives difference between maximum fractal part and minimum
+    Gives difference between maximum fractal part and minimum fractal part of elements in list.
+    Fractal part getting by reminder of division by 1.
+    Magical number "4" is amount of digits after dot...Python zen!
+    Remember one thing:
+    -5.9 = -6 + 0.1   fract_part = 0.1 <- !!!That's math bro/sis!!!
 
     :param datalist: list with elements
     :return: difference between maximum fractal part and minimum
     '''
 
-    max_fract = 0.0  # -5.9 = -6 + 0.1   fract_part = 0.1
+    max_fract = 0.0
     min_fract = 1.0
     for i in range(len(datalist)):
         fract_part = round(datalist[i] % 1, 4)
