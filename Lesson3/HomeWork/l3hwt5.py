@@ -23,9 +23,9 @@ def give_int(input_string: str,
             print("That's not a natural number.")
 
 
-def neg_fibo_pos(number):
+def neg_fibo_pos(number: int) -> list:
     '''
-    Gives list with fibonacci/negofibonacci values
+    Gives list with fibonacci(append)/negofibonacci(insert to 0 index) values.
 
     :param number: number of elements
     :return: list with fibonacci/negofibonacci values
