@@ -25,7 +25,7 @@ def random_list(listlen):
     return datalist
 
 
-def summary_on_pos(datalist):  # Positions in list start from 1, indexes from zero...
+def summary_on_pos(datalist):
     summ = 0
     for i in range(1, len(datalist), 2):
         summ += datalist[i]
