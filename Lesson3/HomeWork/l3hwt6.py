@@ -17,19 +17,33 @@
 # Гарри Джеймс Поттер, 15000
 # ДАДЛИ ВЕРНОН ДУРСЛЬ 24000
 
-def employers_data():
+def employers_data(num):
     '''
     Generates list for employers at company
+
+    :param num: takes amount of employers
+    :return: employers list
     '''
-    names = [input('Type name of employer:\n') for i in range(5)]
+    names = [input('Type name of employer: ') for i in range(num)]
     return names
 
 
-def wage_data():
+def wage_data(emp):
     '''
-    Generates list for employer's wage
+    Generates list for employer's wage. List length can't be larger then employers list
+
+    :param emp: employers list
+    :return: wages list
     '''
-    wages = [int(input("Type wages for employers:\n")) for i in range(5)]
+    wages = []
+    for i in range(len(emp)):
+        val = ''
+        while not val.isdigit():
+            val = input('Type wage value: ')
+            if val.isdigit() and int(val) > 0:
+                wages.insert(i, int(val))
+            else:
+                print('Type natural number pls. They working not for food or letters')
     return wages
 
 
@@ -54,13 +68,22 @@ def favorits_list(emp):
 
 def wage_common(emp, wgs):
     '''
-    Generates dictionary with "employer - wage" dependance first - first
+    Generates dictionary with "employer - wage" dependance where wage is chosen by Lyuba
 
     :param emp: takes list of employers
     :param wgs: takes list of employer's wages
     :return: dictionary with emp values as keys, and wgs values as items
     '''
-    wages = {emp[i]: wgs[i] for i in range(len(emp))}
+    wages = {}
+    for i in range(len(emp)):
+        user_choise = input(f"What wage's value is for {emp[i]}?\n" \
+                            f"Choice right position from following list:\n{wgs}\n" \
+                            f"Type position from 1 to {len(wgs)}:\n")
+        if not user_choise.isdigit() or int(user_choise) not in range(1, len(wgs) + 1):
+            user_choise = 0
+        else:
+            user_choise = wgs[int(user_choise) - 1]
+        wages[emp[i]] = user_choise
     return wages
 
 
@@ -81,7 +104,7 @@ def wage_result(wgs_data, favs, coef_emp, coef_favs):
             wgs_data[i] = int(wgs_data[i] * coef_emp)
     for i in favs:
         wgs_data[i.upper()] = wgs_data.pop(i)
-    wgs_data = dict(sorted(wgs_data.items(), key=lambda x: x[0]))    # sort dictionary by alphabet(in fact by UTF-8 :))
+    wgs_data = dict(sorted(wgs_data.items(), key=lambda x: x[0]))  # sort dictionary by alphabet(in fact by UTF-8 :))
     return wgs_data
 
 
@@ -98,8 +121,8 @@ def print_wages_list(dct, entry_string):
         print(f'{i}: {dct[i]}')
 
 
-data_emp = employers_data()
-data_wage = wage_data()
+data_emp = employers_data(5)
+data_wage = wage_data(data_emp)
 wage_list = wage_common(emp=data_emp, wgs=data_wage)
 print_wages_list(wage_list, 'Standart wages list')
 result_wage = wage_result(wage_list, favorits_list(data_emp), 1.5, 2)
