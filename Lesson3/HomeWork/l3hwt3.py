@@ -33,5 +33,5 @@ def max_min_fract(datalist: list) -> float:
 
 size = give_int('Type value for length of the list: ', 1)
 numbers = random_list_float(size)
-print(numbers)
+print(numbers)   # -7 + 0.1068
 print(f'Difference is: {max_min_fract(numbers)}')
