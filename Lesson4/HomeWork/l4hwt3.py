@@ -5,16 +5,16 @@
 from gbfunctions import give_int
 
 
-def create_file(iter: int) -> str:
+def create_file(amnt: int) -> str:
     '''
     Creates .txt file with lines filled by student's names and grades
 
-    :param iter: amount of students
+    :param amnt: amount of students
     :return: name of the file
     '''
 
     with open('students_and_grades.txt', 'w', encoding='UTF8') as file:
-        for _ in range(iter):
+        for _ in range(amnt):
             name = input("Type student's name: ")
             file.write(f'{name} ')
             while True:
@@ -33,8 +33,8 @@ def edit_file(file_name: str, grade: int) -> str:
     Edit student names from "file_name" file to upper case if their grade higher
     then "grade" parameter.
 
-    :param file_name:
-    :param grade:
+    :param file_name: name of file, that we try to edit
+    :param grade: student's grade
     :return: name of edited file
     '''
 
@@ -54,6 +54,6 @@ def edit_file(file_name: str, grade: int) -> str:
 
 
 amount = give_int('Type amount of students: ', 1)
-file_name = create_file(amount)
-result_file = edit_file(file_name, 4)
+fl_name = create_file(amount)
+result_file = edit_file(fl_name, 4)
 print(f'You can see your work in {result_file}')
