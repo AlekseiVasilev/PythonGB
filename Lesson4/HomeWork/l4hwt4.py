@@ -16,7 +16,7 @@ def file_create() -> None:
     """
 
     with open('caesar_enc.txt', 'w', encoding='UTF8') as file:
-        input_string = input("Type any information you wan't:\n>> ")
+        input_string = input("Type any information you want:\n>> ")
         file.write(input_string)
     return print("Success!\nYou have created caesar_enc.txt\n")
 
@@ -70,7 +70,7 @@ def logic_enc(line, i: int, key: int, func: str):
     :param line: List[str] from method
     :param i: iterator value from cycle in method
     :param key: encryption key from method
-    :param func: string where we trying to find symbol from input_string
+    :param func: string where we are trying to find symbol from input_string
     :return: line[i] value
     """
 
@@ -91,7 +91,7 @@ def logic_dec(line, i: int, key: int, func: str):
     :param line: List[str] from method
     :param i: iterator value from cycle in method
     :param key: encryption key from method
-    :param func: string where we trying to find symbol from input_string
+    :param func: string where we are trying to find symbol from input_string
     :return:
     """
 

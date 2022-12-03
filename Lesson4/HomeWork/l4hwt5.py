@@ -71,7 +71,7 @@ def menu_input() -> None:
 
 def enc_rle() -> None:
     """
-    Method that allows us encrypt data with RLE method. Counts repeating symbols
+    Method that allows us to encrypt data with RLE method. Counts repeating symbols
     and put result string to the file.
 
     :return: info to console
