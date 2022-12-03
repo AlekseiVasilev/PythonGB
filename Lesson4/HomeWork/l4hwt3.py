@@ -5,16 +5,16 @@
 from gbfunctions import give_int
 
 
-def create_file(amnt: int) -> str:
+def create_file() -> None:
     '''
     Creates .txt file with lines filled by student's names and grades
 
-    :param amnt: amount of students
-    :return: name of the file
+    :return: info about operation
     '''
 
+    amount = give_int('Type amount of students: ', 1)
     with open('students_and_grades.txt', 'w', encoding='UTF8') as file:
-        for _ in range(amnt):
+        for _ in range(amount):
             name = input("Type student's name: ")
             file.write(f'{name} ')
             while True:
@@ -25,17 +25,18 @@ def create_file(amnt: int) -> str:
                 else:
                     print('Type integer number from 1 to 5, please')
                     continue
-    return 'students_and_grades.txt'
+    return print("Success!\nYou have created students_and_grades.txt\n")
 
 
-def edit_file(file_name: str, grade: int) -> str:
+def edit_file(file_name: str, grade: int) -> None:
     '''
     Edit student names from "file_name" file to upper case if their grade higher
     then "grade" parameter.
+    Important: student's grate must be last symbol in line of the file!!!
 
     :param file_name: name of file, that we try to edit
     :param grade: student's grade
-    :return: name of edited file
+    :return: info about operation
     '''
 
     with open(file_name, 'r', encoding='UTF8') as file:
@@ -50,10 +51,29 @@ def edit_file(file_name: str, grade: int) -> str:
     with open(file_name, 'w', encoding='UTF8') as file:
         for i in lines_data:
             file.write(i)
-    return file_name
+    return print("Success!\nYou have edited students_and_grades.txt\n")
 
 
-amount = give_int('Type amount of students: ', 1)
-fl_name = create_file(amount)
-result_file = edit_file(fl_name, 4)
-print(f'You can see your work in {result_file}')
+def menu_input():
+    '''
+    Creates console menu for user
+
+    :return:
+    '''
+
+    while True:
+        print('Type "1" if you want to create new file')
+        print('Type "2" if you want to edit existing file')
+        print('Type "-1" if you want to exit')
+        num = input('What operation do you want to do?: ')
+        if num == '1':
+            create_file()
+        elif num == '2':
+            edit_file('students_and_grades.txt', 4)
+        elif num == '-1':
+            return exit(print("Bye-bye"))
+        else:
+            print("Incorrect value, try again!")
+
+
+menu_input()
