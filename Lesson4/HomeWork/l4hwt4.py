@@ -22,6 +22,16 @@ def file_create() -> None:
 
 
 def enc_key_caesar() -> int:
+    '''
+    Asking encryption key from user, which calculated from input string to number.
+    Key format: 1r - 25r; 1l - 25l
+    Why 25? It's range of the biggest string, where we try to find or symbol (ascii_lowercase for ex.)
+    If we try 0 or 26, then symbol will not change
+    r - means right, or "+" operation; l - means left, or "-" operation
+
+    :return: [int] encryption key
+    '''
+
     while True:
         enc_key = []
         key = input('Type key for caesar encryption.\n'
@@ -53,82 +63,115 @@ def enc_key_caesar() -> int:
     return enc_key
 
 
+def logic_enc(line, i: int, key: int, func: str):
+    '''
+    Repeated code, that we use in encryption method.
+
+    :param line: List[str] from method
+    :param i: iterator value from cycle in method
+    :param key: encryption key from method
+    :param func: string where we trying to find symbol from input_string
+    :return: line[i] value
+    '''
+
+    symbol_index = func.find(line[i])
+    if symbol_index >= 0:
+        symbol_index = symbol_index + key
+        if symbol_index > (len(func) - 1) or symbol_index < (len(func) - 1) * (-1):
+            symbol_index = symbol_index % len(func)
+        line[i] = func[symbol_index]
+    return line[i]
+
+
+def logic_dec(line, i: int, key: int, func: str):
+    '''
+    Repeated code, that we use in decipher method. Yes, it's only replaces "+" by "-"
+    Roman, could we unite this logic's methods by additional parameter?
+
+    :param line: List[str] from method
+    :param i: iterator value from cycle in method
+    :param key: encryption key from method
+    :param func: string where we trying to find symbol from input_string
+    :return:
+    '''
+
+    symbol_index = func.find(line[i])
+    if symbol_index >= 0:
+        symbol_index = symbol_index - key
+        if symbol_index > (len(func) - 1) or symbol_index < (len(func) - 1) * (-1):
+            symbol_index = symbol_index % len(func)
+        line[i] = func[symbol_index]
+    return line[i]
+
+
 def enc_func_caesar(key: int) -> None:
+    '''
+    Encryption method, which takes encryption key and applies it to each symbol
+
+    :param key: [int] encryption key
+    :return: info to console
+    '''
+
     with open('caesar_enc.txt', 'r', encoding='UTF8') as file:
         line = list(file.readline())
         for i in range(len(line)):
             if line[i] in ascii_lowercase:
-                symbol_index = ascii_lowercase.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index + key
-                    if symbol_index > (len(ascii_lowercase) - 1) or symbol_index < (len(ascii_lowercase) - 1) * (-1):
-                        symbol_index = symbol_index % len(ascii_lowercase)
-                    line[i] = ascii_lowercase[symbol_index]
+                line[i] = logic_enc(line, i, key, ascii_lowercase)
             elif line[i] in ascii_uppercase:
-                symbol_index = ascii_uppercase.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index + key
-                    if symbol_index > (len(ascii_uppercase) - 1) or symbol_index < (len(ascii_uppercase) - 1) * (-1):
-                        symbol_index = symbol_index % len(ascii_uppercase)
-                    line[i] = ascii_uppercase[symbol_index]
+                line[i] = logic_enc(line, i, key, ascii_uppercase)
             elif line[i] in digits:
-                symbol_index = digits.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index + key
-                    if symbol_index > (len(digits) - 1) or symbol_index < (len(digits) - 1) * (-1):
-                        symbol_index = symbol_index % len(digits)
-                    line[i] = digits[symbol_index]
+                line[i] = logic_enc(line, i, key, digits)
             elif line[i] in punctuation:
-                symbol_index = punctuation.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index + key
-                    if symbol_index > (len(punctuation) - 1) or symbol_index < (len(punctuation) - 1) * (-1):
-                        symbol_index = symbol_index % len(punctuation)
-                    line[i] = punctuation[symbol_index]
+                line[i] = logic_enc(line, i, key, punctuation)
         enc_data = ''.join(line)
-        print(enc_data)
     with open('caesar_enc.txt', 'w', encoding='UTF8') as file:
         file.write(enc_data)
     return print('Success!\nInformation was encrypted in caesar_enc.txt')
 
 
 def dec_func_caesar(key: int) -> None:
+    '''
+    Decipher method, which takes encryption key and applies it to each symbol
+
+    :param key: [int] encryption key
+    :return: info to console
+    '''
+
     with open('caesar_enc.txt', 'r', encoding='UTF8') as file:
         line = list(file.readline())
         for i in range(len(line)):
             if line[i] in ascii_lowercase:
-                symbol_index = ascii_lowercase.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index > (len(ascii_lowercase) - 1) or symbol_index < (len(ascii_lowercase) - 1) * (-1):
-                        symbol_index = symbol_index % len(ascii_lowercase)
-                    line[i] = ascii_lowercase[symbol_index]
+                line[i] = logic_dec(line, i, key, ascii_lowercase)
             elif line[i] in ascii_uppercase:
-                symbol_index = ascii_uppercase.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index > (len(ascii_uppercase) - 1) or symbol_index < (len(ascii_uppercase) - 1) * (-1):
-                        symbol_index = symbol_index % len(ascii_uppercase)
-                    line[i] = ascii_uppercase[symbol_index]
+                line[i] = logic_dec(line, i, key, ascii_uppercase)
             elif line[i] in digits:
-                symbol_index = digits.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index > (len(digits) - 1) or symbol_index < (len(digits) - 1) * (-1):
-                        symbol_index = symbol_index % len(digits)
-                    line[i] = digits[symbol_index]
+                line[i] = logic_dec(line, i, key, digits)
             elif line[i] in punctuation:
-                symbol_index = punctuation.find(line[i])
-                if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index > (len(punctuation) - 1) or symbol_index < (len(punctuation) - 1) * (-1):
-                        symbol_index = symbol_index % len(punctuation)
-                    line[i] = punctuation[symbol_index]
+                line[i] = logic_dec(line, i, key, punctuation)
         enc_data = ''.join(line)
-        print(enc_data)
     with open('caesar_enc.txt', 'w', encoding='UTF8') as file:
         file.write(enc_data)
     return print('Success!\nInformation was deciphered in caesar_enc.txt')
+
+
+def logic_menu(func) -> None:
+    '''
+    Repeated code, that checks file for exist and starts method from parameter.
+
+    :param func: method, that we wan't to call
+    :return: None
+    '''
+
+    if path.exists(fr'.\caesar_enc.txt'):
+        caesar_key = enc_key_caesar()
+        func(key=caesar_key)
+    else:
+        print('File caesar_enc.txt is not exist in this folder.')
+        print("Would you like to create file? (Y/N)")
+        if input().lower() in ('y', 'ye', 'yes'):
+            file_create()
+        else:
+            print("Create file caesar_enc.txt and put it to root folder\n")
 
 
 def menu_input():
@@ -147,27 +190,9 @@ def menu_input():
         if num == '1':
             file_create()
         elif num == '2':
-            if path.exists(fr'.\caesar_enc.txt'):
-                caesar_key = enc_key_caesar()
-                enc_func_caesar(key=caesar_key)
-            else:
-                print('File caesar_enc.txt is not exist in this folder.')
-                print("Would you like to create file? (Y/N)")
-                if input().lower() in ('y', 'ye', 'yes'):
-                    file_create()
-                else:
-                    print("Create file caesar_enc.txt and put it to root folder\n")
+            logic_menu(enc_func_caesar)
         elif num == '3':
-            if path.exists(fr'.\caesar_enc.txt'):
-                caesar_key = enc_key_caesar()
-                dec_func_caesar(key=caesar_key)
-            else:
-                print('File caesar_enc.txt is not exist in this folder.')
-                print("Would you like to create file? (Y/N)")
-                if input().lower() in ('y', 'ye', 'yes'):
-                    file_create()
-                else:
-                    print("Create file caesar_enc.txt and put it to root folder\n")
+            logic_menu(dec_func_caesar)
         elif num == '-1':
             return exit(print("Bye-bye"))
         else:
