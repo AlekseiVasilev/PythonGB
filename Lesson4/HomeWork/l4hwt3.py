@@ -44,7 +44,11 @@ def edit_file(file_name: str, grade: int) -> None:
         lines_data = []
         for line in file.readlines():
             data_string = line.strip('\n')
-            student_grade = int(data_string[-1])
+            try:
+                student_grade = int(data_string[-1])
+            except ValueError:
+                exit(f"Error: 0x80002020 Student's grade is missing.\n"
+                     f"Try to edit {file_name} manually or contact your system administrator.")
             if student_grade >= grade:
                 lines_data.append(data_string.upper() + '\n')
             else:
