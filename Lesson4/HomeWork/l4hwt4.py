@@ -60,32 +60,33 @@ def enc_func_caesar(key: int) -> None:
             if line[i] in ascii_lowercase:
                 symbol_index = ascii_lowercase.find(line[i])
                 if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index >= len(ascii_lowercase) or symbol_index < len(ascii_lowercase) * (-1):
+                    symbol_index = symbol_index + key
+                    if symbol_index > (len(ascii_lowercase) - 1) or symbol_index < (len(ascii_lowercase) - 1) * (-1):
                         symbol_index = symbol_index % len(ascii_lowercase)
                     line[i] = ascii_lowercase[symbol_index]
             elif line[i] in ascii_uppercase:
                 symbol_index = ascii_uppercase.find(line[i])
                 if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index >= len(ascii_uppercase) or symbol_index < len(ascii_uppercase) * (-1):
+                    symbol_index = symbol_index + key
+                    if symbol_index > (len(ascii_uppercase) - 1) or symbol_index < (len(ascii_uppercase) - 1) * (-1):
                         symbol_index = symbol_index % len(ascii_uppercase)
                     line[i] = ascii_uppercase[symbol_index]
             elif line[i] in digits:
                 symbol_index = digits.find(line[i])
                 if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index >= len(digits) or symbol_index < len(digits) * (-1):
+                    symbol_index = symbol_index + key
+                    if symbol_index > (len(digits) - 1) or symbol_index < (len(digits) - 1) * (-1):
                         symbol_index = symbol_index % len(digits)
                     line[i] = digits[symbol_index]
-            if line[i] in punctuation:
+            elif line[i] in punctuation:
                 symbol_index = punctuation.find(line[i])
                 if symbol_index >= 0:
-                    symbol_index = symbol_index - key
-                    if symbol_index >= len(punctuation) or symbol_index < len(punctuation) * (-1):
+                    symbol_index = symbol_index + key
+                    if symbol_index > (len(punctuation) - 1) or symbol_index < (len(punctuation) - 1) * (-1):
                         symbol_index = symbol_index % len(punctuation)
                     line[i] = punctuation[symbol_index]
         enc_data = ''.join(line)
+        print(enc_data)
     with open('caesar_enc.txt', 'w', encoding='UTF8') as file:
         file.write(enc_data)
     return print('Success!\nInformation was encrypted in caesar_enc.txt')
@@ -99,31 +100,32 @@ def dec_func_caesar(key: int) -> None:
                 symbol_index = ascii_lowercase.find(line[i])
                 if symbol_index >= 0:
                     symbol_index = symbol_index - key
-                    if symbol_index >= len(ascii_lowercase) or symbol_index < len(ascii_lowercase) * (-1):
+                    if symbol_index > (len(ascii_lowercase) - 1) or symbol_index < (len(ascii_lowercase) - 1) * (-1):
                         symbol_index = symbol_index % len(ascii_lowercase)
                     line[i] = ascii_lowercase[symbol_index]
             elif line[i] in ascii_uppercase:
                 symbol_index = ascii_uppercase.find(line[i])
                 if symbol_index >= 0:
                     symbol_index = symbol_index - key
-                    if symbol_index >= len(ascii_uppercase) or symbol_index < len(ascii_uppercase) * (-1):
+                    if symbol_index > (len(ascii_uppercase) - 1) or symbol_index < (len(ascii_uppercase) - 1) * (-1):
                         symbol_index = symbol_index % len(ascii_uppercase)
                     line[i] = ascii_uppercase[symbol_index]
             elif line[i] in digits:
                 symbol_index = digits.find(line[i])
                 if symbol_index >= 0:
                     symbol_index = symbol_index - key
-                    if symbol_index >= len(digits) or symbol_index < len(digits) * (-1):
+                    if symbol_index > (len(digits) - 1) or symbol_index < (len(digits) - 1) * (-1):
                         symbol_index = symbol_index % len(digits)
                     line[i] = digits[symbol_index]
-            if line[i] in punctuation:
+            elif line[i] in punctuation:
                 symbol_index = punctuation.find(line[i])
                 if symbol_index >= 0:
                     symbol_index = symbol_index - key
-                    if symbol_index >= len(punctuation) or symbol_index < len(punctuation) * (-1):
+                    if symbol_index > (len(punctuation) - 1) or symbol_index < (len(punctuation) - 1) * (-1):
                         symbol_index = symbol_index % len(punctuation)
                     line[i] = punctuation[symbol_index]
         enc_data = ''.join(line)
+        print(enc_data)
     with open('caesar_enc.txt', 'w', encoding='UTF8') as file:
         file.write(enc_data)
     return print('Success!\nInformation was deciphered in caesar_enc.txt')
