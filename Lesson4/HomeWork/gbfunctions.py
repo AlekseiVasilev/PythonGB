@@ -1,5 +1,5 @@
 # Following methods are used in 5 tasks of homework.
-# So that's why i moved it "library"
+# So that's why I moved it "library"
 
 
 from random import random, randint
@@ -27,16 +27,16 @@ def give_int(input_string: str,
             print("That's not a natural number.")
 
 
-def random_list(listlen: int) -> list:
+def random_list(list_len: int) -> list:
     """
     Gives list with random values
 
-    :param listlen: list's length
+    :param list_len: list's length
     :return: list with random values
     """
 
     data_list = list()
-    for i in range(listlen):
+    for i in range(list_len):
         data_list.append(randint(-10, 10))
     return data_list
 
