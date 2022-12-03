@@ -8,29 +8,29 @@ from gbfunctions import give_int
 
 
 def random_list(amount: int) -> List[int]:
-    '''
+    """
     Gives list with random values from 0 to amount which repeated a few times (randomly of course)
 
     :param amount: amount of possible values, amount of iterations
     :return: list with random values
-    '''
+    """
 
-    datalist = list()
+    data_list = list()
     for i in range(amount):
         rep = randint(1, amount)
         temp = randint(0, amount)
-        for i in range(rep):
-            datalist.append(temp)
-    return datalist
+        for j in range(rep):
+            data_list.append(temp)
+    return data_list
 
 
 def find_unique_val(data: List[int]) -> List[int]:
-    '''
+    """
     Makes a new list with unique values of list 'data'
 
     :param data: list with numbers
     :return: list with unique values
-    '''
+    """
 
     unq_val = []
     for i in data:

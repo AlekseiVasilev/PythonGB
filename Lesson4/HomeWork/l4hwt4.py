@@ -9,11 +9,11 @@ from os import path
 
 
 def file_create() -> None:
-    '''
+    """
     Creates caesar_enc.txt file
 
     :return: info about operation
-    '''
+    """
 
     with open('caesar_enc.txt', 'w', encoding='UTF8') as file:
         input_string = input("Type any information you wan't:\n>> ")
@@ -22,7 +22,7 @@ def file_create() -> None:
 
 
 def enc_key_caesar() -> int:
-    '''
+    """
     Asking encryption key from user, which calculated from input string to number.
     Key format: 1r - 25r; 1l - 25l
     Why 25? It's range of the biggest string, where we try to find our symbol (ascii_lowercase for ex.)
@@ -30,7 +30,7 @@ def enc_key_caesar() -> int:
     r - means right, or "+" operation; l - means left, or "-" operation
 
     :return: [int] encryption key
-    '''
+    """
 
     while True:
         enc_key = []
@@ -64,7 +64,7 @@ def enc_key_caesar() -> int:
 
 
 def logic_enc(line, i: int, key: int, func: str):
-    '''
+    """
     Repeated code, that we use in encryption method.
 
     :param line: List[str] from method
@@ -72,7 +72,7 @@ def logic_enc(line, i: int, key: int, func: str):
     :param key: encryption key from method
     :param func: string where we trying to find symbol from input_string
     :return: line[i] value
-    '''
+    """
 
     symbol_index = func.find(line[i])
     if symbol_index >= 0:
@@ -84,7 +84,7 @@ def logic_enc(line, i: int, key: int, func: str):
 
 
 def logic_dec(line, i: int, key: int, func: str):
-    '''
+    """
     Repeated code, that we use in decipher method. Yes, it's only replaces "+" by "-"
     Roman, could we unite this logic's methods by additional parameter?
 
@@ -93,7 +93,7 @@ def logic_dec(line, i: int, key: int, func: str):
     :param key: encryption key from method
     :param func: string where we trying to find symbol from input_string
     :return:
-    '''
+    """
 
     symbol_index = func.find(line[i])
     if symbol_index >= 0:
@@ -105,12 +105,12 @@ def logic_dec(line, i: int, key: int, func: str):
 
 
 def enc_func_caesar(key: int) -> None:
-    '''
+    """
     Encryption method, which takes encryption key and applies it to each symbol
 
     :param key: [int] encryption key
     :return: info to console
-    '''
+    """
 
     with open('caesar_enc.txt', 'r', encoding='UTF8') as file:
         line = list(file.readline())
@@ -130,12 +130,12 @@ def enc_func_caesar(key: int) -> None:
 
 
 def dec_func_caesar(key: int) -> None:
-    '''
+    """
     Decipher method, which takes encryption key and applies it to each symbol
 
     :param key: [int] encryption key
     :return: info to console
-    '''
+    """
 
     with open('caesar_enc.txt', 'r', encoding='UTF8') as file:
         line = list(file.readline())
@@ -155,12 +155,12 @@ def dec_func_caesar(key: int) -> None:
 
 
 def logic_menu(func) -> None:
-    '''
+    """
     Repeated code, that checks file for exist and starts method from parameter.
 
-    :param func: method, that we wan't to call
+    :param func: method, that we want to call
     :return: None
-    '''
+    """
 
     if path.exists(fr'.\caesar_enc.txt'):
         caesar_key = enc_key_caesar()
@@ -175,11 +175,11 @@ def logic_menu(func) -> None:
 
 
 def menu_input():
-    '''
+    """
     Creates console menu for user
 
     :return:
-    '''
+    """
 
     while True:
         print('Type "1" if you want to create file')

@@ -7,11 +7,11 @@ from os import path
 
 
 def create_file() -> None:
-    '''
+    """
     Creates .txt file with lines filled by student's names and grades
 
     :return: info about operation
-    '''
+    """
 
     amount = give_int('Type amount of students: ', 1)
     with open('students_and_grades.txt', 'w', encoding='UTF8') as file:
@@ -30,7 +30,7 @@ def create_file() -> None:
 
 
 def edit_file(file_name: str, grade: int) -> None:
-    '''
+    """
     Edit student names from "file_name" file to upper case if their grade higher
     then "grade" parameter.
     Important: student's grate must be last symbol in line of the file!!!
@@ -38,7 +38,7 @@ def edit_file(file_name: str, grade: int) -> None:
     :param file_name: name of file, that we try to edit
     :param grade: student's grade
     :return: info about operation
-    '''
+    """
 
     with open(file_name, 'r', encoding='UTF8') as file:
         lines_data = []
@@ -60,11 +60,11 @@ def edit_file(file_name: str, grade: int) -> None:
 
 
 def menu_input():
-    '''
+    """
     Creates console menu for user
 
     :return:
-    '''
+    """
 
     while True:
         print('Type "1" if you want to create new file')

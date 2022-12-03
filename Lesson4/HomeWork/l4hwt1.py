@@ -6,12 +6,12 @@ from typing import List
 
 
 def simple_factors(n: int) -> List[int]:
-    '''
+    """
     Makes empty list, then add simple factors of n there, if factor isn't already in list.
 
     :param n: number[int] - natural number
     :return: list[int] - simple factors of n number
-    '''
+    """
 
     factors = []
     i = 2

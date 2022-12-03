@@ -8,13 +8,13 @@ from typing import Optional
 
 def give_int(input_string: str,
              min_num: Optional[int] = None) -> int:
-    '''
+    """
     Gives integer number
 
     :param input_string: welcome to input
     :param min_num: minimum for number's value
     :return: int number
-    '''
+    """
 
     while True:
         try:
@@ -28,28 +28,28 @@ def give_int(input_string: str,
 
 
 def random_list(listlen: int) -> list:
-    '''
+    """
     Gives list with random values
 
     :param listlen: list's length
     :return: list with random values
-    '''
+    """
 
-    datalist = list()
+    data_list = list()
     for i in range(listlen):
-        datalist.append(randint(-10, 10))
-    return datalist
+        data_list.append(randint(-10, 10))
+    return data_list
 
 
-def random_list_float(listlen: int) -> list:
-    '''
+def random_list_float(list_len: int) -> list:
+    """
     Gives list with random values
 
-    :param listlen: list's length
+    :param list_len: list's length
     :return: list with random values
-    '''
+    """
 
-    datalist = list()
-    for i in range(listlen):
-        datalist.append(round(random() - randint(-10, 10), 4))
-    return datalist
+    data_list = list()
+    for i in range(list_len):
+        data_list.append(round(random() - randint(-10, 10), 4))
+    return data_list
