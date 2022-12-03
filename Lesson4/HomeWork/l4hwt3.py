@@ -3,6 +3,7 @@
 # Нужно перезаписать файл.
 
 from gbfunctions import give_int
+from os import path
 
 
 def create_file() -> None:
@@ -69,7 +70,15 @@ def menu_input():
         if num == '1':
             create_file()
         elif num == '2':
-            edit_file('students_and_grades.txt', 4)
+            if path.exists(fr'.\students_and_grades.txt'):
+                edit_file('students_and_grades.txt', 4)
+            else:
+                print('File students_and_grades.txt is not exist in this folder.')
+                print("Would you like to create file? (Y/N)")
+                if input().lower() in ('y', 'ye', 'yes'):
+                    create_file()
+                else:
+                    print("Create file students_and_grades.txt and put it to root folder\n")
         elif num == '-1':
             return exit(print("Bye-bye"))
         else:
