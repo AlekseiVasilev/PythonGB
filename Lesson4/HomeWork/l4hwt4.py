@@ -25,7 +25,7 @@ def enc_key_caesar() -> int:
     '''
     Asking encryption key from user, which calculated from input string to number.
     Key format: 1r - 25r; 1l - 25l
-    Why 25? It's range of the biggest string, where we try to find or symbol (ascii_lowercase for ex.)
+    Why 25? It's range of the biggest string, where we try to find our symbol (ascii_lowercase for ex.)
     If we try 0 or 26, then symbol will not change
     r - means right, or "+" operation; l - means left, or "-" operation
 
