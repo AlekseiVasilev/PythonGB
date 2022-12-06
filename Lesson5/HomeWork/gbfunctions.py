@@ -19,7 +19,7 @@ def give_int(input_string: str,
     while True:
         try:
             num = int(input(input_string))
-            if min_num and num <= min_num:
+            if min_num and num < min_num:
                 print(f'Type number bigger then {min_num}!')
                 continue
             return num
