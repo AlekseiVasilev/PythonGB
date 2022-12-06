@@ -17,5 +17,5 @@ def cut_string(input_string: str) -> str:
     return ' '.join(result_list)
 
 
-result = cut_string(input('Type some text:\n>>'))
+result = cut_string(input('Type some text:\n>> '))
 print(result)
