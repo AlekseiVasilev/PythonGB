@@ -16,26 +16,56 @@
 from typing import List
 
 
-def cortege_list_creator(lang: List[str] = ['python', 'c#', 'c++', 'rust', 'kotlin', 'java', 'swift'],
-                         numbers: List[int] = [1, 2, 3, 4, 5, 6, 7]) -> List:
+def cortege_list_creator(lang=None,
+                         numbers=None) -> List[tuple[int, str]]:
+    """
+    Creates list with tuple[int, str] on lang and numbers zip.
+
+    :param lang: list with language naming
+    :param numbers: list with numbers
+    :return: list with tuple[int, str]
+    """
+    if lang is None:
+        lang = ['python', 'c#', 'c++', 'rust', 'kotlin', 'java', 'swift']
+    if numbers is None:
+        numbers = [1, 2, 3, 4, 5, 6, 7]
     lang = list(map(str.upper, lang))
     cortege = list(zip(numbers, lang))
     return cortege
 
 
-def ord_summary(cort_item: str) -> int:
+def ord_summary(cort_item: tuple[str]) -> int:
+    """
+    Concatenation of all letters at 1 index of tuple
+
+    :param cort_item: element of tuple on 1 index
+    :return: int
+    """
+
     symbol_summary = 0
     for i in cort_item:
         symbol_summary += ord(i)
     return symbol_summary
 
 
-def rampam(data: List) -> List:
-    new_data = []
-    for i in range(len(data)):
-        if not ord_summary(data[i][1]) % data[i][0]:
-            new_data.append((ord_summary(data[i][1]), data[i][1]))
-    return new_data
+def filter_data(data: List) -> tuple[List[tuple[int, str]], int]:
+    """
+    Generates list with tuples, where 1 index ord_summary divides
+    without reminder on it's number at 0 index.
+
+    :param data: list with tuples
+    :return: result list and all letters ord summary
+    """
+
+    # task example said, that 1 can't be divider...If not, just del this 1 in range
+    data = [(ord_summary(data[i][1]), data[i][1]) for i in range(1, len(data))
+            if not ord_summary(data[i][1]) % data[i][0]]
+    elem_ord_sum = 0
+    for i in data:
+        elem_ord_sum += i[0]
+    return data, elem_ord_sum
 
 
-print(rampam(cortege_list_creator()))
+data_list = cortege_list_creator()
+result = filter_data(data_list)
+print(f'Result list with tuples: {result[0]}\nSummary of numbers: {result[1]}')
