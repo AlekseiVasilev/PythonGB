@@ -81,7 +81,7 @@ def enc_rle() -> None:
         with open("data_enc.txt", 'w', encoding="UTF-8") as code_rle:
             nocode_data = list(no_code_rle.readline())
             result = []
-            for i, j in groupby(nocode_data):    #  A, A, A, A ,C, C           A [A, A, A, A]
+            for i, j in groupby(nocode_data):
                 result.append(str(len(list(j))))
                 result.append(i)
                 result_string = ''
