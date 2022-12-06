@@ -25,6 +25,7 @@ def cortege_list_creator(lang=None,
     :param numbers: list with numbers
     :return: list with tuple[int, str]
     """
+
     if lang is None:
         lang = ['python', 'c#', 'c++', 'rust', 'kotlin', 'java', 'swift']
     if numbers is None:
