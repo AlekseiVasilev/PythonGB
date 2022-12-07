@@ -2,6 +2,7 @@
 # Проверяйте победу после каждого хода, фильтруя столбцы, строки и диагонали по знаку хода
 
 from typing import List
+from gbfunctions import give_int
 
 
 def field_creator(turns_list: List):
@@ -30,7 +31,11 @@ def turn_maker(player: List, turns_list: List) -> None:
 
     pl = player[0]
     for i in range(len(turns_list) - 1):
-        new_turn = int(input(f"{pl[1]}, please, choose cell for your turn: "))
+        new_turn = 10
+        while new_turn > 9 or turns_list[new_turn - 1] in ('X', 'O'):
+            new_turn = give_int(f"{pl[1]}, please, choose cell for your turn: ", 1)
+            if new_turn > 9 or turns_list[new_turn - 1] in ('X', 'O'):
+                print("You can't place your mark there!\n")
         if pl == player[0]:
             turns_list[new_turn - 1] = "X"
             field_creator(turns_list)
